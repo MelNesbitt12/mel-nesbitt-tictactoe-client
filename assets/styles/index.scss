@@ -1,1 +1,38 @@
 @import '~bootstrap/scss/bootstrap';
+
+$alt-color: Lavender;
+$body-bg-color: #d65164;
+$font-color: $light;
+
+body {
+  background-color: $body-bg-color;
+}
+
+h1 {
+  display: flex;
+  border: 1px solid black;
+  color: white;
+  justify-content: center;
+}
+
+h2 {
+  display: flex;
+  border: 1px solid black;
+  color: white;
+  justify-content: center;
+
+}
+
+.box {
+  align-items: center;
+  background-color: white;
+  border: 1px solid black;
+  color: black;
+  display: flex;
+  height: 80px;
+  justify-content: center;
+}
+
+.alt-color {
+  background-color: $alt-color;
+}

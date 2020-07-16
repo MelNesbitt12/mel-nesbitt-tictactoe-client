@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-      <title>Example</title>
+      <title>Mel's Tic Tac Toe Game</title>
       <meta name="viewport" content="width=device-width, initial-scale=1">
 
       <!-- Do not add `link` tags-->
@@ -12,6 +12,36 @@
       <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
     </head>
     <body>
-      <h1>Browser Template</h1>
-    </body>
+      <h1>Tic Tac Toe!</h1>
+
+      <p id="message"></p>
+
+      <form id="sign-up">
+        <input name="credentials[email]" type="email" placeholder="email here">
+        <input name="credentials[password]" type="password" placeholder="password here">
+        <input name="credentials[password_confirmation]" type="password" placeholder="confirm password">
+        <button type="submit">Create Account</button>
+      </form>
+
+    <section class="unauthenticated">
+      <form id="sign-in">
+      <input name="credentials[email]" placeholder="email here" type="email">
+      <input name="credentials[password]" placeholder="password here" type="password">
+      <button type="submit">Sign In!</button>
+      </form>
+      </section>
+
+    <form id="change-password">
+      <input name="passwords[old]" placeholder="old password" type="password">
+      <input name="passwords[new]" placeholder="new password" type="password">
+      <button type="submit">Change Password</button>
+    </form>
+
+    <section class="authenticated">
+      <form id="sign-out">
+      <button type="submit">Sign Out</button>
+      </form>
+  </section>
+
+</body>
 </html>

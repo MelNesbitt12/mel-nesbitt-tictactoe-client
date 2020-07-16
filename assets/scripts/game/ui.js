@@ -1,7 +1,6 @@
 'use strict'
 
 // creating messaging for success and failure of api requests
-
 const createGameSuccess = function (response) {
   $('#game-board-created').text('Game created!')
 }

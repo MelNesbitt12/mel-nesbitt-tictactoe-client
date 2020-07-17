@@ -14,6 +14,11 @@ const onGameCreate = function (event) {
     .catch(ui.createGameFailure)
 }
 
+const clickedSpace = function (event) {
+  const yourMove = event.target
+  $(yourMove).html('x')
+}
+
 // const onGameUpate = function (event) {
 //   event.preventDefault()
 //
@@ -21,5 +26,6 @@ const onGameCreate = function (event) {
 // }
 
 module.exports = {
-  onGameCreate
+  onGameCreate,
+  clickedSpace
 }

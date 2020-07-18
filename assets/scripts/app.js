@@ -14,13 +14,5 @@ $(() => {
   // Game listeners
   $("#new-game").on('click', gameEvents.onGameCreate)
 
-  $("#one").on('click', gameEvents.onGameUpdate)
-  $("#two").on('click', )
-  $("#three").on('click', )
-  $("#four").on('click', )
-  $("#five").on('click', )
-  $("#six").on('click', )
-  $("#seven").on('click', )
-  $("#eight").on('click', )
-  $("#nine").on('click', )
+  $(".space").on('click', gameEvents.onGameUpdate)
 })

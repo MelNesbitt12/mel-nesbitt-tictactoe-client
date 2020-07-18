@@ -1,5 +1,5 @@
 'use strict'
-
+const authApi = require('../auth/api')
 const config = require('../config')
 const store = require('../store')
 
@@ -14,7 +14,7 @@ const createGame = function () {
   })
 }
 
-const updateGame = function (gameObject) {
+const updateGame = function (currentIndex, currentValue, isOver) {
   return $.ajax({
     headers: {
       Authorization: 'Bearer ' + store.user.token
@@ -24,10 +24,10 @@ const updateGame = function (gameObject) {
     data: {
       game: {
         cell: {
-          index: gameObject.index,
-          value: gameObject.value
+          index: currentIndex,
+          value: currentValue
         },
-        over: false
+        over: isOver
       }
     }
   })

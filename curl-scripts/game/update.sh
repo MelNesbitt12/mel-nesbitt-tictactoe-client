@@ -5,12 +5,12 @@ curl "https://tic-tac-toe-api-development.herokuapp.com/games/${ID}" \
   --header "Content-type: application/json" \
   --data '{
     "game": {
-    "cell": {
-      "index": "'"${INDEX}"'" ,
-      "value": "'"${VALUE}"'"
-    },
-    "over": "'"${TRUEFALSE}"'"
-  }
-}'
+      "cell": {
+        "index": "'"${INDEX}"'" ,
+        "value": "'"${VALUE}"'"
+      },
+      "over": "'"${TRUEFALSE}"'"
+    }
+  }'
 
 echo

@@ -15,8 +15,8 @@ const signInSuccess = function (response) {
   console.log(store)
   store.user = response.user
   console.log('token :', store.user.token)
-  $('.authenticated').show()
-  $('.unauthenticated').hide()
+  $('.authenticated').hide()
+  $('.unauthenticated').show()
 
   $('form').trigger('reset')
 }
@@ -35,8 +35,8 @@ const changePasswordFailure = function () {
 
 const signOutSuccess = function () {
   $('#message').text('You\'re signed out!')
-  $('.authenticated').hide()
-  $('.unauthenticated').show()
+  $('.authenticated').show()
+  $('.unauthenticated').hide()
 
   $('form').trigger('reset')
 

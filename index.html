@@ -16,58 +16,65 @@
 
       <p id="message"></p>
 
-      <form id="sign-up">
+      <!-- <form id="sign-up">
         <input name="credentials[email]" type="email" placeholder="email here">
         <input name="credentials[password]" type="password" placeholder="password here">
         <input name="credentials[password_confirmation]" type="password" placeholder="confirm password">
         <button type="submit">Create Account</button>
-      </form>
+      </form> -->
+      <div class="authenticated"
+        <form id="sign-up">
+        <input name="credentials[email]" type="email" placeholder="email here">
+        <input name="credentials[password]" type="password" placeholder="password here">
+        <input name="credentials[password_confirmation]" type="password" placeholder="confirm password">
+        <button type="submit">Create Account</button>
+        </form>
+      </div>
+      <div class="authenticated">
+        <form id="sign-in">
+        <input name="credentials[email]" placeholder="email here" type="email">
+        <input name="credentials[password]" placeholder="password here" type="password">
+        <button type="submit">Sign In!</button>
+        </form>
+      </div>
 
-    <section class="unauthenticated">
-      <form id="sign-in">
-      <input name="credentials[email]" placeholder="email here" type="email">
-      <input name="credentials[password]" placeholder="password here" type="password">
-      <button type="submit">Sign In!</button>
-      </form>
-      </section>
+      <div class="unauthenticated">
+        <form id="change-password">
+        <input name="passwords[old]" placeholder="old password" type="password">
+        <input name="passwords[new]" placeholder="new password" type="password">
+        <button type="submit">Change Password</button>
+        </form>
+      </div>
+      <div class="unauthenticated">
+        <form id="sign-out">
+        <button type="submit">Sign Out</button>
+        </form>
+      </div>
 
-    <form id="change-password">
-      <input name="passwords[old]" placeholder="old password" type="password">
-      <input name="passwords[new]" placeholder="new password" type="password">
-      <button type="submit">Change Password</button>
-    </form>
-
-    <section class="authenticated">
-      <form id="sign-out">
-      <button type="submit">Sign Out</button>
-      </form>
-  </section>
-
-  <button id="new-game">Play Round</button>
-  <p id="game-board-created"></p>
-  <p id="update-game"></p>
+    <button id="new-game">Play Round</button>
+    <p id="game-board-created"></p>
+    <p id="update-game"></p>
 
 
-<h2>Select A Square to Start The Game!</h2>
+  <h2>Select A Square to Start The Game!</h2>
 
-  <div class="container">
-    <div class="row">
-      <div id="one" data-cell-index='0' class="col-4 box space"></div>
-      <div id="two" data-cell-index='1' class="col-4 box space"></div>
-      <div id="three" data-cell-index='2' class="col-4 box space"></div>
+    <div class="container">
+      <div class="row">
+        <div id="one" data-cell-index='0' class="col-4 box space"></div>
+        <div id="two" data-cell-index='1' class="col-4 box space"></div>
+        <div id="three" data-cell-index='2' class="col-4 box space"></div>
+      </div>
+      <div class="row">
+        <div id="four" data-cell-index='3' class="col-4 box space"></div>
+        <div id="five" data-cell-index='4' class="col-4 box space"></div>
+        <div id="six" data-cell-index='5' class="col-4 box space"></div>
+      </div>
+      <div class="row">
+        <div id="seven" data-cell-index='6' class="col-4 box space"></div>
+        <div id="eight" data-cell-index='7' class="col-4 box space"></div>
+        <div id="nine" data-cell-index='8' class="col-4 box space"></div>
+      </div>
+
     </div>
-    <div class="row">
-      <div id="four" data-cell-index='3' class="col-4 box space"></div>
-      <div id="five" data-cell-index='4' class="col-4 box space"></div>
-      <div id="six" data-cell-index='5' class="col-4 box space"></div>
-    </div>
-    <div class="row">
-      <div id="seven" data-cell-index='6' class="col-4 box space"></div>
-      <div id="eight" data-cell-index='7' class="col-4 box space"></div>
-      <div id="nine" data-cell-index='8' class="col-4 box space"></div>
-    </div>
-
-  </div>
-
 </body>
 </html>

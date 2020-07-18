@@ -1,38 +1,43 @@
 @import '~bootstrap/scss/bootstrap';
 
-$alt-color: Lavender;
-$body-bg-color: #d65164;
-$font-color: $light;
-
 body {
-  background-color: $body-bg-color;
+  background-color: #9bd3b4;
 }
 
 h1 {
   display: flex;
-  border: 1px solid black;
-  color: white;
+  color: #4b7acc;
   justify-content: center;
 }
 
 h2 {
   display: flex;
-  border: 1px solid black;
-  color: white;
+  color: #4b7acc;
   justify-content: center;
 
+}
+
+p {
+  display: flex;
+  color: white;
+  justify-content: center
+}
+
+.authenticated {
+  display: flex;
+  align-items: center
 }
 
 .box {
   align-items: center;
   background-color: white;
   border: 1px solid black;
-  color: black;
+  color: #4b7acc;
   display: flex;
   height: 80px;
   justify-content: center;
 }
 
 .alt-color {
-  background-color: $alt-color;
+  background-color: green;
 }

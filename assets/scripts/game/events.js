@@ -14,16 +14,19 @@ const onGameCreate = function (event) {
     .catch(ui.createGameFailure)
 }
 
-let currentValue = 'x'
+let currentValue = 'X'
 
 const onGameUpdate = function (event) {
   event.preventDefault()
 
   const yourMove = event.target
-  // check whether space is occupied
+
+  // check whether space is occupied OR game is over
   const spaceOccupied = isOccupied(yourMove)
-  if (spaceOccupied) {
-    console.log('You can\'t click here')
+  if (spaceOccupied === true) {
+    $('#stop-click').html('Space taken - you can\'t click here')
+  } else if (isGameOver() === true) {
+    $('#stop-click').html('Stop clicking! The game is over!')
   } else {
     // if the space is empty, place mark
     placeMark(yourMove)
@@ -43,7 +46,11 @@ const onGameUpdate = function (event) {
       .then(ui.updateGameSuccess)
       .catch(ui.updateGameFailure)
 
-    updateCurrentValue()
+    if (isOver === false) {
+      updateCurrentValue()
+    } else {
+      $('#game-over').html('Game Over! ' + currentValue + ' wins!')
+    }
   }
 }
 
@@ -62,10 +69,12 @@ const placeMark = function (yourMove) {
 
 // update the currentPlayer value from X to O and vice versa
 const updateCurrentValue = function () {
-  if (currentValue === 'x') {
-    currentValue = 'o'
+  if (currentValue === 'X') {
+    currentValue = 'O'
+    $('#update-game').html('Your move, O')
   } else {
-    currentValue = 'x'
+    currentValue = 'X'
+    $('#update-game').html('Your move, X')
   }
 }
 
@@ -111,22 +120,7 @@ const allMatch = function (index1Value, index2Value, index3Value) {
   }
 }
 
-const onGameOver = function () {
-  if (store.game.over === true) {
-    $('.space').off('click')
-  }
-}
-
-// const gameOver = function (game) {
-//   if (store.game.over === true) {
-//     $('.space').off('click')
-//   }
-// }
-//
-// gameOver(store.game)
-
 module.exports = {
   onGameCreate,
-  onGameUpdate,
-  onGameOver
+  onGameUpdate
 }

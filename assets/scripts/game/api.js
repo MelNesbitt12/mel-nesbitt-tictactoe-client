@@ -1,5 +1,4 @@
 'use strict'
-const authApi = require('../auth/api')
 const config = require('../config')
 const store = require('../store')
 
@@ -33,7 +32,27 @@ const updateGame = function (currentIndex, currentValue, isOver) {
   })
 }
 
+// const gameOver = function (game) {
+//   return $.ajax({
+//     headers: {
+//       Authorization: 'Bearer ' + store.user.token
+//     },
+//     url: config.apiUrl + '/games/' + store.game._id,
+//     method: 'PATCH',
+//     data: {
+//       game: {
+//         cell: {
+//           index: store.game.cell.index,
+//           value: store.game.cell.value
+//         },
+//         over: store.game.over
+//       }
+//     }
+//   })
+// }
+
 module.exports = {
   createGame,
   updateGame
+  // gameOver
 }

@@ -1,11 +1,12 @@
 'use strict'
 const store = require('../store')
+const events = require('./events')
 
 // creating messaging for success and failure of api requests
 const createGameSuccess = function (response) {
-  $('#game-board-created').text('Game created!')
-
   store.game = response.game
+  $('#game-board-created').text('Game on!')
+
   // const space = $(`[index=${currentIndex}]`)
   // space.html('x')
 }
@@ -15,8 +16,6 @@ const createGameFailure = function (error) {
 }
 
 const updateGameSuccess = function (response) {
-  $('#update-game').text('Board updated!')
-
   store.game = response.game
 }
 

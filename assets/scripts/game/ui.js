@@ -6,7 +6,6 @@ const createGameSuccess = function (response) {
   $('#game-board-created').text('Game created!')
 
   store.game = response.game
-  console.log('game id: ' + store.game._id)
   // const space = $(`[index=${currentIndex}]`)
   // space.html('x')
 }
@@ -19,7 +18,6 @@ const updateGameSuccess = function (response) {
   $('#update-game').text('Board updated!')
 
   store.game = response.game
-  // console.log('game id: ' + store.ID)
 }
 
 const updateGameFailure = function (error) {

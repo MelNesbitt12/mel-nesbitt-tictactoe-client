@@ -14,7 +14,6 @@ h2 {
   display: flex;
   color: #4b7acc;
   justify-content: center;
-
 }
 
 p {
@@ -22,6 +21,38 @@ p {
   color: white;
   justify-content: center
 }
+
+#hide-on-load {
+  display: none
+}
+
+#message {
+  font-size: 35px;
+}
+
+#update-game {
+  font-size: 35px;
+}
+
+#game-board-created {
+  font-size: 35px;
+}
+
+#stop-click {
+  font-size: 35px;
+}
+
+#game-over {
+  font-size: 35px;
+}
+
+// .play-again {
+//   display: none;
+// }
+
+// .game-over {
+//   display: none;
+// }
 
 .authenticated {
   display: flex;

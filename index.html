@@ -16,18 +16,12 @@
 
       <p id="message"></p>
 
-      <!-- <form id="sign-up">
-        <input name="credentials[email]" type="email" placeholder="email here">
-        <input name="credentials[password]" type="password" placeholder="password here">
-        <input name="credentials[password_confirmation]" type="password" placeholder="confirm password">
-        <button type="submit">Create Account</button>
-      </form> -->
-      <div class="authenticated"
+      <div class="authenticated">
         <form id="sign-up">
-        <input name="credentials[email]" type="email" placeholder="email here">
-        <input name="credentials[password]" type="password" placeholder="password here">
-        <input name="credentials[password_confirmation]" type="password" placeholder="confirm password">
-        <button type="submit">Create Account</button>
+          <input name="credentials[email]" type="email" placeholder="email here">
+          <input name="credentials[password]" type="password" placeholder="password here">
+          <input name="credentials[password_confirmation]" type="password" placeholder="confirm password">
+          <button type="submit">Create Account</button>
         </form>
       </div>
       <div class="authenticated">
@@ -38,6 +32,7 @@
         </form>
       </div>
 
+    <div id="hide-on-load">
       <div class="unauthenticated">
         <form id="change-password">
         <input name="passwords[old]" placeholder="old password" type="password">
@@ -50,8 +45,10 @@
         <button type="submit">Sign Out</button>
         </form>
       </div>
+      <button id="new-game" class="unathenticated">Play Round</button>
+      <button id="player-stats" class="unauthenticated">Get Your Stats</button>
+    </div>
 
-    <button id="new-game">Play Round</button>
     <p id="game-board-created"></p>
     <p id="update-game"></p>
     <p id="game-over"></p>
@@ -78,5 +75,9 @@
       </div>
 
     </div>
+
+  <h2 class="play-again">Click Here to Play Again!</h2>
+
+
 </body>
 </html>

@@ -50,6 +50,7 @@ const onGameUpdate = function (event) {
       updateCurrentValue()
     } else {
       $('#game-over').html('Game Over! ' + currentValue + ' wins!')
+      $('#update-game').hide()
     }
   }
 }
@@ -120,7 +121,29 @@ const allMatch = function (index1Value, index2Value, index3Value) {
   }
 }
 
+const onNewGame = function (event) {
+  event.preventDefault()
+
+  const playAgain = store.user.token
+
+  api.newGame(playAgain)
+    .then(ui.newGameSuccess)
+    .catch(ui.newGameFailure)
+}
+
+// const onPlayerStats = function (event) {
+//   event.preventDefault()
+//
+//   const playerGames = store.user.token
+//
+//   api.playerStats()
+//     .then(ui.playerStatsSuccess)
+//     .catch(ui.playerStatsFailure)
+// }
+
 module.exports = {
   onGameCreate,
-  onGameUpdate
+  onGameUpdate,
+  onNewGame,
+  // onPlayerStats
 }

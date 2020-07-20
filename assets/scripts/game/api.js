@@ -32,8 +32,31 @@ const updateGame = function (currentIndex, currentValue, isOver) {
   })
 }
 
+const newGame = function () {
+  return $.ajax({
+    headers: {
+      Authorization: 'Bearer ' + store.user.token
+    },
+    url: config.apiUrl + '/games',
+    method: 'POST',
+    data: {}
+  })
+}
+
+// const playerStats = function () {
+//   return $.ajax({
+//     headers: {
+//       Authorization: 'Bearer ' + store.user.token
+//     },
+//     url: config.apiUrl + '/games',
+//     method: 'GET',
+//     data: {}
+//   })
+// }
+
 module.exports = {
   createGame,
-  updateGame
-
+  updateGame,
+  newGame,
+  // playerStats
 }

@@ -52,7 +52,7 @@ const onGameUpdate = function (event) {
       updateCurrentValue()
     } else {
       if (isTie === false) {
-        $('#update-game').html('Game Over! ' + currentValue + ' wins!')
+        $('#update-game').html('Game Over: ' + currentValue + ' wins! Play Again?')
       } else {
         $('#update-game').html('It\'s a tie!')
       }
@@ -81,41 +81,6 @@ const updateCurrentValue = function () {
     $('#update-game').html('Your Move Player X')
   }
 }
-// write a function to determine whether or not the game is over
-// takes array of cells as input and returns true if the game is over, false if otherwise
-// ex: isOver (['x','x','x','','','','','','']) => true
-// const isGameOver = function () {
-//   if (allMatch(store.game.cells[0], store.game.cells[1], store.game.cells[2])) {
-//     return true
-//   }
-//   if (allMatch(store.game.cells[3], store.game.cells[4], store.game.cells[5])) {
-//     return true
-//   }
-//   if (allMatch(store.game.cells[6], store.game.cells[7], store.game.cells[8])) {
-//     return true
-//   }
-//   if (allMatch(store.game.cells[0], store.game.cells[3], store.game.cells[6])) {
-//     return true
-//   }
-//   if (allMatch(store.game.cells[1], store.game.cells[4], store.game.cells[7])) {
-//     return true
-//   }
-//   if (allMatch(store.game.cells[2], store.game.cells[5], store.game.cells[8])) {
-//     return true
-//   }
-//   if (allMatch(store.game.cells[2], store.game.cells[4], store.game.cells[6])) {
-//     return true
-//   }
-//   if (allMatch(store.game.cells[0], store.game.cells[4], store.game.cells[8])) {
-//     return true
-//   }
-//   // we need to check to see if the game board is full. We do this by looping over the array of cells and checking to see if any cells are ''. We use indexOf to check.
-//   if (store.game.cells.indexOf('') === -1) {
-//     isTie = true
-//     return true
-//   }
-//   return false
-// }
 
 const getWinner = function (cells) {
   if (allMatch(cells[0], cells[1], cells[2])) {

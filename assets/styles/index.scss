@@ -2,59 +2,137 @@
 
 body {
   background-color: #9bd3b4;
+  font-family: sans-serif;
 }
 
 h1 {
+  color: #558ae6;
   display: flex;
-  color: #4b7acc;
-  justify-content: center;
+  font-size: 80px;
   font-weight: bolder;
-  font-size: 60px;
+  justify-content: center;
+  text-shadow: 2px 2px rgba(0, 0, 0, .50);
 }
 
 input {
-  margin: 10px 0px;
-  font-size: 20px;
+  border: 2px solid #558ae6;
   border-radius: 20px;
+  display: block;
+  font-size: 20px;
+  margin: 10px 0px;
+  padding: 10px;
 }
 
 h2 {
+  color: #558ae6;
   display: flex;
-  color: #4b7acc;
-  justify-content: center;
-  font-weight: bolder;
   font-size: 45px;
+  font-weight: bolder;
+  justify-content: center;
 }
 
 p {
+  color: #558ae6;
   display: flex;
-  color: #4b7acc;
-  justify-content: center
+  font-weight: bold;
+  justify-content: center;
+  text-shadow: 1px 1px rgba(0, 0, 0, .50);
 }
 
 .authenticated {
   display: none;
 }
 
-#message, #update-game, #stop-click, #game-over, #play-again {
-  font-size: 35px;
+.unauthenticated {
+  border: 10px solid #f2ef8a;
+  border-radius: 10px;
 }
 
-#sign-in-button, #sign-up-button, #sign-out-button, #password, #new-game, #player-stats,  {
-  border-radius: 20px;
-  margin: 10px 0px;
+#new-user, #returning-user {
+  display: flex;
+  font-size: 40px;
+  text-shadow: 1px 1px rgba(0, 0, 0, .50);
+}
+
+#message {
+  font-size: 40px;
+}
+
+#update-game, #stop-click, #game-over, #play-again {
+  font-size: 60px;
+}
+
+#sign-up, #sign-in {
+  margin: 2rem auto;
+  max-width: 300px;
+  padding: 2rem;
+}
+
+#sign-in-button, #sign-up-button, #sign-out-button, #password, #new-game, #player-stats  {
+  background-color: #f2ef8a;
+  border: 2px solid #558ae6;
+  border-radius: 10px;
+  cursor: pointer;
+  font: bold sans-serif;
+  margin: 10px 0;
+  padding: 10px;
+  text-transform: uppercase;
+}
+
+#sign-in-button:hover, :focus {
+  background: #558ae6;
+  color: #FFF;
+  outline: none;
+}
+
+#sign-up-button:hover, :focus {
+  background: #558ae6;
+  color: #FFF;
+  outline: none;
+}
+
+#sign-out-button:hover, :focus {
+  background: #558ae6;
+  color: #FFF;
+  outline: none;
+}
+
+#password:hover, :focus {
+  background: #558ae6;
+  color: #FFF;
+  outline: none;
+}
+
+#new-game:hover, :focus {
+  background: #558ae6;
+  color: #FFF;
+  outline: none;
+}
+
+#player-stats:hover, :focus {
+  background: #558ae6;
+  color: #FFF;
+  outline: none;
 }
 
 .box {
-  display: flex;
-  border-radius: 25px;
   align-items: center;
   background-color: white;
-  border: 2px solid gold;
-  color: #4b7acc;
+  border: 2px solid #558ae6;
+  border-radius: 25px;
+  color: #558ae6;
+  display: flex;
+  font-size: 20vh;
   font-weight: bolder;
-  height: 80px;
+  height: 180px;
   justify-content: center;
+  margin: auto;
+  padding: 10px;
+  text-shadow: 2px 2px rgba(0, 0, 0, .25);
+}
+
+.box:hover {
+  background-color: #f2ef8a;
 }
 
 .alt-color {

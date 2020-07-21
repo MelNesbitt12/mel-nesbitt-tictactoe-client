@@ -12,11 +12,12 @@
       <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
     </head>
     <body>
-      <h1>Tic Tac Toe!</h1>
+      <h1>Tic-Tac-Toe a la Mel!</h1>
 
       <p id="message" class="not-started"></p>
 
         <form id="sign-up" class="unauthenticated not-started">
+          <p id="new-user">New User?</p>
           <input name="credentials[email]" type="email" placeholder="email here">
           <input name="credentials[password]" type="password" placeholder="password here">
           <input name="credentials[password_confirmation]" type="password" placeholder="confirm password">
@@ -24,6 +25,7 @@
         </form>
 
         <form class="unauthenticated not-started" id="sign-in">
+          <p id="returning-user">Been Here Before?</p>
           <input name="credentials[email]" placeholder="email here" type="email">
           <input name="credentials[password]" placeholder="password here" type="password">
           <button id="sign-in-button" type="submit">Sign In</button>
@@ -42,11 +44,8 @@
       <button id="new-game" class="authenticated not-started over">Play New Game</button>
       <button id="player-stats" class="authenticated">Total Games Played</button>
 
-
-    <p id="game-board-created"></p>
-    <p id="update-game" class="authenticated started"></p>
-    <p id="game-over" class="authenticated over"></p>
-
+      <p id="update-game" class="authenticated started"></p>
+      <p id="game-over" class="authenticated over"></p>
 
     <div class="container authenticated started">
       <div class="row">
@@ -64,7 +63,6 @@
         <div id="eight" data-cell-index='7' class="col-4 box space"></div>
         <div id="nine" data-cell-index='8' class="col-4 box space"></div>
       </div>
-
     </div>
 
 </body>

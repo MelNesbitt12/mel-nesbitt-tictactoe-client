@@ -1,5 +1,6 @@
 'use strict'
 const store = require('../store')
+const gameLogic = require('./gameLogic.js')
 
 // creating messaging for success and failure of api requests
 const createGameSuccess = function (response) {
@@ -25,6 +26,7 @@ const playerStatsSuccess = function (response) {
   // console.log(response)
   let totalXWins = 0
   let totalOWins = 0
+  // if current player has not yet played any games - how to account for that?
   for (let index = 0; index < response.games.length; index++) {
     const currentGame = response.games[index] // the object stored at the index of the games array
     if (currentGame.over === true) {

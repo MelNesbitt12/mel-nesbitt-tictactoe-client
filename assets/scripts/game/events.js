@@ -11,6 +11,7 @@ const onGameCreate = function (event) {
 
   const newGame = store.user.token
   isTie = false
+  currentValue = 'X'
 
   api.createGame(newGame)
     .then(ui.createGameSuccess)
@@ -21,13 +22,12 @@ const onGameUpdate = function (event) {
   event.preventDefault()
 
   const yourMove = event.target
-  console.log(store)
 
   // check whether space is occupied OR game is over
   const spaceOccupied = isOccupied(yourMove)
   if (spaceOccupied === true) {
     $('#update-game').html('Space taken - you can\'t click here')
-  } else if (isGameOver() === true) {
+  } else if (getWinner(store.game.cells) !== '') {
     $('#update-game').html('Stop clicking! The game is over!')
   } else {
     // if the space is empty, place mark
@@ -40,8 +40,8 @@ const onGameUpdate = function (event) {
     store.game.cells[currentIndex] = currentValue
 
     // check to see if the game is over - should return true or false
-    const isOver = isGameOver()
-    console.log('Updating game', isOver)
+    const winner = getWinner(store.game.cells)
+    const isOver = winner !== ''
     // we need to turn this into a function that will check if there are empty spaces on the board. Will be similar to isOccupied in that it will return a boolean
 
     api.updateGame(currentIndex, currentValue, isOver)
@@ -52,7 +52,7 @@ const onGameUpdate = function (event) {
       updateCurrentValue()
     } else {
       if (isTie === false) {
-        $('#update-game').html('Game Over! ' + currentValue + ' wins!')
+        $('#update-game').html('Game Over: ' + currentValue + ' wins! Play Again?')
       } else {
         $('#update-game').html('It\'s a tie!')
       }
@@ -81,45 +81,42 @@ const updateCurrentValue = function () {
     $('#update-game').html('Your Move Player X')
   }
 }
-// write a function to determine whether or not the game is over
-// takes array of cells as input and returns true if the game is over, false if otherwise
-// ex: isOver (['x','x','x','','','','','','']) => true
-const isGameOver = function () {
-  if (allMatch(store.game.cells[0], store.game.cells[1], store.game.cells[2])) {
-    return true
+
+const getWinner = function (cells) {
+  if (allMatch(cells[0], cells[1], cells[2])) {
+    return cells[0]
   }
-  if (allMatch(store.game.cells[3], store.game.cells[4], store.game.cells[5])) {
-    return true
+  if (allMatch(cells[3], cells[4], cells[5])) {
+    return cells[3]
   }
-  if (allMatch(store.game.cells[6], store.game.cells[7], store.game.cells[8])) {
-    return true
+  if (allMatch(cells[6], cells[7], cells[8])) {
+    return cells[6]
   }
-  if (allMatch(store.game.cells[0], store.game.cells[3], store.game.cells[6])) {
-    return true
+  if (allMatch(cells[0], cells[3], cells[6])) {
+    return cells[0]
   }
-  if (allMatch(store.game.cells[1], store.game.cells[4], store.game.cells[7])) {
-    return true
+  if (allMatch(cells[1], cells[4], cells[7])) {
+    return cells[1]
   }
-  if (allMatch(store.game.cells[2], store.game.cells[5], store.game.cells[8])) {
-    return true
+  if (allMatch(cells[2], cells[5], cells[8])) {
+    return cells[2]
   }
-  if (allMatch(store.game.cells[2], store.game.cells[4], store.game.cells[6])) {
-    return true
+  if (allMatch(cells[2], cells[4], cells[6])) {
+    return cells[2]
   }
-  if (allMatch(store.game.cells[0], store.game.cells[4], store.game.cells[8])) {
-    return true
+  if (allMatch(cells[0], cells[4], cells[8])) {
+    return cells[0]
   }
   // we need to check to see if the game board is full. We do this by looping over the array of cells and checking to see if any cells are ''. We use indexOf to check.
-  if (store.game.cells.indexOf('') === -1) {
-    isTie = true
-    return true
+  if (cells.indexOf('') === -1) {
+    // isTie = true
+    return 'Tie'
   }
-  return false
+  return ''
 }
 
 // ex allMatch(game.cell[0], game.cell[1], game.cell[2]) { }
 const allMatch = function (index1Value, index2Value, index3Value) {
-  console.log(index1Value, index2Value, index3Value)
   if (index1Value === index2Value && index2Value === index3Value && index3Value === index1Value && index1Value) {
     return true
   } else {
@@ -140,5 +137,6 @@ const onPlayerStats = function (event) {
 module.exports = {
   onGameCreate,
   onGameUpdate,
-  onPlayerStats
+  onPlayerStats,
+  getWinner
 }

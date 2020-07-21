@@ -1,57 +1,43 @@
 'use strict'
 const store = require('../store')
 const events = require('./events')
-const authApi = require('../auth/ui.js')
 
 // creating messaging for success and failure of api requests
 const createGameSuccess = function (response) {
   store.game = response.game
-  $('#game-board-created').text('Game on!')
-  $('#message').hide()
-  $('#change-password').hide()
-  $('#new-game').hide()
+  $('#update-game').text('Your Move Player X')
+  $('.space').text('')
+  $('.not-started').hide()
 }
 
 const createGameFailure = function (error) {
-  $('#game-board-created').text('Could not create game')
+  $('#update-game').text('Could not create game')
 }
 
 const updateGameSuccess = function (response) {
   store.game = response.game
-  $('#game-board-created').hide()
 }
 
 const updateGameFailure = function (error) {
   $('#update-game').text('Could not update game')
 }
 
-const newGameSuccess = function (response) {
-  store.game = response.game
-  $('.space').text('')
-  $('.play-again').show()
-  $('#game-over').hide()
+const playerStatsSuccess = function (response) {
+  console.log(response)
+  console.log(response.games.length)
+  $('#message').show()
+  $('#message').text('You\'ve played ' + response.games.length + ' games')
 }
 
-const newGameFailure = function (error) {
-  console.log(newGameFailure)
-  $('message').text('Could not play a new game')
+const playerStatsFailure = function (error) {
+  $('#message').text('Could not get your stats')
 }
-
-// const playerStatsSuccess = function (response) {
-//   let gameHtml = ''
-//   response.game.forEach(game => {
-//     const oneGame = (`
-//       <h3>${games._id}`)
-//   })
-// }
 
 module.exports = {
   createGameSuccess,
   createGameFailure,
   updateGameSuccess,
   updateGameFailure,
-  newGameSuccess,
-  newGameFailure
-  // playerStatsSuccess,
-  // playerStatsFailure
+  playerStatsSuccess,
+  playerStatsFailure
 }

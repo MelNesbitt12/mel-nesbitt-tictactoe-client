@@ -8,63 +8,51 @@ h1 {
   display: flex;
   color: #4b7acc;
   justify-content: center;
+  font-weight: bolder;
+  font-size: 60px;
+}
+
+input {
+  margin: 10px 0px;
+  font-size: 20px;
+  border-radius: 20px;
 }
 
 h2 {
   display: flex;
   color: #4b7acc;
   justify-content: center;
+  font-weight: bolder;
+  font-size: 45px;
 }
 
 p {
   display: flex;
-  color: white;
+  color: #4b7acc;
   justify-content: center
 }
 
-#hide-on-load {
-  display: none
-}
-
-#message {
-  font-size: 35px;
-}
-
-#update-game {
-  font-size: 35px;
-}
-
-#game-board-created {
-  font-size: 35px;
-}
-
-#stop-click {
-  font-size: 35px;
-}
-
-#game-over {
-  font-size: 35px;
-}
-
-// .play-again {
-//   display: none;
-// }
-
-// .game-over {
-//   display: none;
-// }
-
 .authenticated {
-  display: flex;
-  align-items: center
+  display: none;
+}
+
+#message, #update-game, #stop-click, #game-over, #play-again {
+  font-size: 35px;
+}
+
+#sign-in-button, #sign-up-button, #sign-out-button, #password, #new-game, #player-stats,  {
+  border-radius: 20px;
+  margin: 10px 0px;
 }
 
 .box {
+  display: flex;
+  border-radius: 25px;
   align-items: center;
   background-color: white;
-  border: 1px solid black;
+  border: 2px solid gold;
   color: #4b7acc;
-  display: flex;
+  font-weight: bolder;
   height: 80px;
   justify-content: center;
 }

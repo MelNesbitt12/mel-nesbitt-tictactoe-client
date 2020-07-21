@@ -1,13 +1,10 @@
 'use strict'
 
 const store = require('../store')
-// const api = require('./api.js')
 
 const signUpSuccess = function () {
   $('#message').text('You are signed up!')
-  $('#new-game').hide()
-
-  $('#sign-up').hide()
+  $('form').trigger('reset')
 }
 
 const signUpFailure = function () {
@@ -16,13 +13,11 @@ const signUpFailure = function () {
 
 const signInSuccess = function (response) {
   $('#message').text('Hooray, you\'re signed in!')
-  console.log(store)
   store.user = response.user
   console.log('token :', store.user.token)
-  $('#hide-on-load').show()
-  $('#new-game').show()
-  $('.authenticated').hide()
-  $('.unauthenticated').show()
+  $('.authenticated').show()
+  $('.unauthenticated').hide()
+  $('.space, #update-game').text('')
 
   $('form').trigger('reset')
 }
@@ -33,7 +28,7 @@ const signInFailure = function () {
 
 const changePasswordSuccess = function () {
   $('#message').text('You\'ve changed your password!')
-  $('#change-password').hide()
+  // $('#change-password').hide()
 }
 
 const changePasswordFailure = function () {
@@ -42,13 +37,8 @@ const changePasswordFailure = function () {
 
 const signOutSuccess = function () {
   $('#message').text('You\'re signed out!')
-  $('.authenticated').show()
-  $('.unauthenticated').hide()
-  $('#game-over').hide()
-  $('#stop-click').hide()
-  $('#update-game').hide()
-  $('#game-board-created').hide()
-  $('.space').html('')
+  $('.unauthenticated').show()
+  $('.authenticated').hide()
 
   $('form').trigger('reset')
 

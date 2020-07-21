@@ -14,50 +14,41 @@
     <body>
       <h1>Tic Tac Toe!</h1>
 
-      <p id="message"></p>
+      <p id="message" class="not-started"></p>
 
-      <div class="authenticated">
-        <form id="sign-up">
+        <form id="sign-up" class="unauthenticated not-started">
           <input name="credentials[email]" type="email" placeholder="email here">
           <input name="credentials[password]" type="password" placeholder="password here">
           <input name="credentials[password_confirmation]" type="password" placeholder="confirm password">
-          <button type="submit">Create Account</button>
+          <button id="sign-up-button" type="submit">Create Account</button>
         </form>
-      </div>
-      <div class="authenticated">
-        <form id="sign-in">
-        <input name="credentials[email]" placeholder="email here" type="email">
-        <input name="credentials[password]" placeholder="password here" type="password">
-        <button type="submit">Sign In!</button>
-        </form>
-      </div>
 
-    <div id="hide-on-load">
-      <div class="unauthenticated">
-        <form id="change-password">
-        <input name="passwords[old]" placeholder="old password" type="password">
-        <input name="passwords[new]" placeholder="new password" type="password">
-        <button type="submit">Change Password</button>
+        <form class="unauthenticated not-started" id="sign-in">
+          <input name="credentials[email]" placeholder="email here" type="email">
+          <input name="credentials[password]" placeholder="password here" type="password">
+          <button id="sign-in-button" type="submit">Sign In</button>
         </form>
-      </div>
-      <div class="unauthenticated">
-        <form id="sign-out">
-        <button type="submit">Sign Out</button>
+
+        <form class="authenticated" id="change-password">
+          <input name="passwords[old]" placeholder="old password" type="password">
+          <input name="passwords[new]" placeholder="new password" type="password">
+          <button id="password" type="submit">Change Password</button>
         </form>
-      </div>
-      <button id="new-game" class="unathenticated">Play Round</button>
-      <button id="player-stats" class="unauthenticated">Get Your Stats</button>
-    </div>
+
+        <form class="authenticated" id="sign-out">
+          <button id="sign-out-button" type="submit">Sign Out</button>
+        </form>
+
+      <button id="new-game" class="authenticated not-started over">Play New Game</button>
+      <button id="player-stats" class="authenticated">Total Games Played</button>
+
 
     <p id="game-board-created"></p>
-    <p id="update-game"></p>
-    <p id="game-over"></p>
-    <p id="stop-click"></p>
+    <p id="update-game" class="authenticated started"></p>
+    <p id="game-over" class="authenticated over"></p>
 
 
-  <h2>Select A Square to Start The Game!</h2>
-
-    <div class="container">
+    <div class="container authenticated started">
       <div class="row">
         <div id="one" data-cell-index='0' class="col-4 box space"></div>
         <div id="two" data-cell-index='1' class="col-4 box space"></div>
@@ -75,9 +66,6 @@
       </div>
 
     </div>
-
-  <h2 class="play-again">Click Here to Play Again!</h2>
-
 
 </body>
 </html>

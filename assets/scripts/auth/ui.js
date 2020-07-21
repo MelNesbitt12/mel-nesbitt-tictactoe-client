@@ -28,7 +28,6 @@ const signInFailure = function () {
 
 const changePasswordSuccess = function () {
   $('#message').text('You\'ve changed your password!')
-  // $('#change-password').hide()
 }
 
 const changePasswordFailure = function () {
@@ -36,6 +35,7 @@ const changePasswordFailure = function () {
 }
 
 const signOutSuccess = function () {
+  $('#message').show()
   $('#message').text('You\'re signed out!')
   $('.unauthenticated').show()
   $('.authenticated').hide()

@@ -1,4 +1,4 @@
-curl "https://tic-tac-toe-api-development.herokuapp.com/games?over-true" \
+curl "https://tic-tac-toe-api-development.herokuapp.com/games?over=true" \
   --include \
   --request GET \
   --header "Authorization: Bearer ${TOKEN}" \

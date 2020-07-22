@@ -1,128 +1,108 @@
+
 'use strict'
+// This file stores event handlers
 const api = require('./api')
 const ui = require('./ui')
 const store = require('../store')
+const gameLogic = require('./gameLogic')
 
-let currentValue = 'X'
-let isTie = false
+// create two global variables to store the player turn and whether or not the game is a tie
+let cellValue = 'X' // user always starts game playing as X
+let isTie = false // set isTie to false as default
 
+// onGameCreate function starts a new game
 const onGameCreate = function (event) {
   event.preventDefault()
 
-  const newGame = store.user.token
+  // reset the global variables for a new game
   isTie = false
-  currentValue = 'X'
+  cellValue = 'X'
 
-  api.createGame(newGame)
+  api.createGame()
     .then(ui.createGameSuccess)
     .catch(ui.createGameFailure)
 }
 
+// function to update the board
 const onGameUpdate = function (event) {
   event.preventDefault()
 
-  const yourMove = event.target
+  const clickedCell = event.target
 
   // check whether space is occupied OR game is over
-  const spaceOccupied = isOccupied(yourMove)
-  if (spaceOccupied === true) {
+  //
+  const cellOccupied = isOccupied(clickedCell)
+  if (cellOccupied === true) {
     $('#update-game').html('Space taken - you can\'t click here')
-  } else if (getWinner(store.game.cells) !== '') {
+  } else if (gameLogic.getWinner(store.game.cells) !== '') {
+    // getWinner is a function that takes in an array of cells and returns the X, O, Tie, or ''
+    // if getWinner returns X, O or Tie:
     $('#update-game').html('Stop clicking! The game is over!')
   } else {
     // if the space is empty, place mark
-    placeMark(yourMove)
+    placeMark(clickedCell)
     // after placing mark, send information to object
-    let currentIndex = $(yourMove).attr('data-cell-index')// the index value of the clicked space
-    currentIndex = Number(currentIndex)
+    let cellIndex = $(clickedCell).attr('data-cell-index')// the index number of the clicked space
+    cellIndex = Number(cellIndex)
 
     // set the value of the current cell index to x or o
-    store.game.cells[currentIndex] = currentValue
+    store.game.cells[cellIndex] = cellValue
 
-    // check to see if the game is over - should return true or false
-    const winner = getWinner(store.game.cells)
-    const isOver = winner !== ''
-    // we need to turn this into a function that will check if there are empty spaces on the board. Will be similar to isOccupied in that it will return a boolean
+    // check to see if the game is over - will return X, O, Tie or ''
+    const winner = gameLogic.getWinner(store.game.cells)
+    let isOver = false
+    // if getWinner returns X, O or Tie, the game is over
+    if (winner === 'X' || winner === 'O' || winner === 'Tie') {
+      isOver = true
+    }
+    // if getWinner returns Tie, isTie is true
+    if (winner === 'Tie') {
+      isTie = true
+    }
 
-    api.updateGame(currentIndex, currentValue, isOver)
+    api.updateGame(cellIndex, cellValue, isOver)
       .then(ui.updateGameSuccess)
       .catch(ui.updateGameFailure)
 
+    // update UI depending on whether the game is over or not
     if (isOver === false) {
-      updateCurrentValue()
+      updateCellValue()
     } else {
       if (isTie === false) {
-        $('#update-game').html('Game Over: ' + currentValue + ' wins! Play Again?')
+        $('#update-game').html('Game Over: ' + cellValue + ' wins!')
       } else {
-        $('#update-game').html('It\'s a tie!')
+        $('#update-game').html('It\'s a tie - play again!')
       }
       $('.over').show()
     }
   }
 }
-// write a function to check whether a space is occupied by innerHTML on the board
-const isOccupied = function (yourMove) {
-  if ($(yourMove).html()) {
+
+// Begin helper functions
+
+// checks whether a space is occupied by innerHTML on the board
+const isOccupied = function (clickedCell) {
+  if ($(clickedCell).html()) {
     return true
   }
   return false
 }
-// set the innerHTML of an unoccupied space to the value of currentPlayer
-const placeMark = function (yourMove) {
-  $(yourMove).html(`${currentValue}`)
+// sets the innerHTML of an unoccupied space to the value of currentValue
+const placeMark = function (clickedCell) {
+  $(clickedCell).html(`${cellValue}`)
 }
-// update the currentPlayer value from X to O and vice versa
-const updateCurrentValue = function () {
-  if (currentValue === 'X') {
-    currentValue = 'O'
+// updates the currentPlayer value from X to O and vice versa
+const updateCellValue = function () {
+  if (cellValue === 'X') {
+    cellValue = 'O'
     $('#update-game').html('Your Move Player O')
   } else {
-    currentValue = 'X'
+    cellValue = 'X'
     $('#update-game').html('Your Move Player X')
   }
 }
 
-const getWinner = function (cells) {
-  if (allMatch(cells[0], cells[1], cells[2])) {
-    return cells[0]
-  }
-  if (allMatch(cells[3], cells[4], cells[5])) {
-    return cells[3]
-  }
-  if (allMatch(cells[6], cells[7], cells[8])) {
-    return cells[6]
-  }
-  if (allMatch(cells[0], cells[3], cells[6])) {
-    return cells[0]
-  }
-  if (allMatch(cells[1], cells[4], cells[7])) {
-    return cells[1]
-  }
-  if (allMatch(cells[2], cells[5], cells[8])) {
-    return cells[2]
-  }
-  if (allMatch(cells[2], cells[4], cells[6])) {
-    return cells[2]
-  }
-  if (allMatch(cells[0], cells[4], cells[8])) {
-    return cells[0]
-  }
-  // we need to check to see if the game board is full. We do this by looping over the array of cells and checking to see if any cells are ''. We use indexOf to check.
-  if (cells.indexOf('') === -1) {
-    // isTie = true
-    return 'Tie'
-  }
-  return ''
-}
-
-// ex allMatch(game.cell[0], game.cell[1], game.cell[2]) { }
-const allMatch = function (index1Value, index2Value, index3Value) {
-  if (index1Value === index2Value && index2Value === index3Value && index3Value === index1Value && index1Value) {
-    return true
-  } else {
-    return false
-  }
-}
+// End helper functions
 
 const onPlayerStats = function (event) {
   event.preventDefault()
@@ -137,6 +117,5 @@ const onPlayerStats = function (event) {
 module.exports = {
   onGameCreate,
   onGameUpdate,
-  onPlayerStats,
-  getWinner
+  onPlayerStats
 }

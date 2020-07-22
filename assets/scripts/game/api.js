@@ -13,7 +13,7 @@ const createGame = function () {
   })
 }
 
-const updateGame = function (currentIndex, currentValue, isOver) {
+const updateGame = function (cellIndex, cellValue, isOver) {
   return $.ajax({
     headers: {
       Authorization: 'Bearer ' + store.user.token
@@ -23,8 +23,8 @@ const updateGame = function (currentIndex, currentValue, isOver) {
     data: {
       game: {
         cell: {
-          index: currentIndex,
-          value: currentValue
+          index: cellIndex,
+          value: cellValue
         },
         over: isOver
       }

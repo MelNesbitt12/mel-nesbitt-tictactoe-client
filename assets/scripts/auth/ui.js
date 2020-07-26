@@ -15,7 +15,6 @@ const signUpFailure = function () {
 const signInSuccess = function (response) {
   $('#message').text('Welcome! Click Play New Game to get started.')
   store.user = response.user
-  console.log('token :', store.user.token)
   $('.authenticated').show()
   $('.unauthenticated').hide()
   $('.space, #update-game').text('')

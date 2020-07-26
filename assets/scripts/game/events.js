@@ -14,7 +14,8 @@ let isTie = false // set isTie to false as default
 const onGameCreate = function (event) {
   event.preventDefault()
 
-  // reset the global variables for a new game
+  // reset the global variables for a new game - the function that updates the board needs to be
+  // able to reach these whenever a move is successfully made
   isTie = false
   cellValue = 'X'
 
@@ -30,7 +31,6 @@ const onGameUpdate = function (event) {
   const clickedCell = event.target
 
   // check whether space is occupied OR game is over
-  //
   const cellOccupied = isOccupied(clickedCell)
   if (cellOccupied === true) {
     $('#update-game').html('Space taken - you can\'t click here')
@@ -49,8 +49,8 @@ const onGameUpdate = function (event) {
     store.game.cells[cellIndex] = cellValue
 
     // check to see if the game is over - will return X, O, Tie or ''
-    const winner = gameLogic.getWinner(store.game.cells)
     let isOver = false
+    const winner = gameLogic.getWinner(store.game.cells)
     // if getWinner returns X, O or Tie, the game is over
     if (winner === 'X' || winner === 'O' || winner === 'Tie') {
       isOver = true

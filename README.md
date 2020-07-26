@@ -7,9 +7,9 @@ web application.
 ## Important Links
 ---------------
 
-* Link to Deployed Tic-Tac-Toe Game (https://melnesbitt12.github.io/mel-nesbitt-tictactoe-client/)
-* My Tic-Tac-Toe GitHub Repository (https://github.com/MelNesbitt12/mel-nesbitt-tictactoe-client)
-* Game Project Requirements (https://git.generalassemb.ly/ga-wdi-boston/game-project)
+* Link to Deployed Tic-Tac-Toe Game https://melnesbitt12.github.io/mel-nesbitt-tictactoe-client/
+* My Tic-Tac-Toe GitHub Repository https://github.com/MelNesbitt12/mel-nesbitt-tictactoe-client
+* Game Project Requirements https://git.generalassemb.ly/ga-wdi-boston/game-project
 
 ## Planning Story
 --------------
@@ -44,9 +44,12 @@ Users are also able to check the total number of games they've played and how ma
 -----------------
 
 My tic-tac-toe application was built with:
-  * General Assembly's Game API (https://git.generalassemb.ly/ga-wdi-boston/game-project-api)
-  * Node.js
+  * HTML
+  * CSS
+  * Javascript
+  * Bootstrap
   * Ajax
+  * Authentication and Game API
 
 ## Unsolved Problems:
 -----------------
@@ -67,4 +70,4 @@ and focus properties. I want to be able to combine them all together.
 
 ## Images
 ------
-* Updated Tic Tac Toe Wireframe (https://imgur.com/a/llrsrij)
+* Updated Tic Tac Toe Wireframe https://imgur.com/a/llrsrij
